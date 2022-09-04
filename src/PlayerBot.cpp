@@ -23,7 +23,7 @@ PlayerBot::~PlayerBot() {
 
 }
 
-queue<Tile*>tugi;
+queue<Tile*>nextque;
 queue<int>branchq;
 
 bool PlayerBot::findGoal(Tile * currentLocation)
@@ -71,44 +71,44 @@ bool PlayerBot::findGoal(Tile * currentLocation)
     if(proc2 == 0){
         return false;
     }
-    currentLocation->setFlag(nullptr);
+    currentLocation->setVisit(nullptr);
 
     if(currentLocation->getWest() != nullptr){
-        if(currentLocation->getWest()->getFlag() != nullptr){
-            tugi.push(currentLocation->getWest());
-            currentLocation->getWest()->setFlag(nullptr);
+        if(currentLocation->getWest()->getVisit() != nullptr){
+            nextque.push(currentLocation->getWest());
+            currentLocation->getWest()->setVisit(nullptr);
             currentLocation->getWest()->proc=proc2;
             branch++;
         }
     }
     if(currentLocation->getNorth() != nullptr){
-        if(currentLocation->getNorth()->getFlag() != nullptr){
-            tugi.push(currentLocation->getNorth());
-            currentLocation->getNorth()->setFlag(nullptr);
+        if(currentLocation->getNorth()->getVisit() != nullptr){
+            nextque.push(currentLocation->getNorth());
+            currentLocation->getNorth()->setVisit(nullptr);
             currentLocation->getNorth()->proc=proc2;
             branch++;
         }
     }
     if(currentLocation->getEast() != nullptr){
-        if(currentLocation->getEast()->getFlag() != nullptr){
-            tugi.push(currentLocation->getEast());
-            currentLocation->getEast()->setFlag(nullptr);
+        if(currentLocation->getEast()->getVisit() != nullptr){
+            nextque.push(currentLocation->getEast());
+            currentLocation->getEast()->setVisit(nullptr);
             currentLocation->getEast()->proc=proc2;
             branch++;
         }
     }
     if(currentLocation->getSouth() != nullptr){
-        if(currentLocation->getSouth()->getFlag() != nullptr){
-            tugi.push(currentLocation->getSouth());
-            currentLocation->getSouth()->setFlag(nullptr);
+        if(currentLocation->getSouth()->getVisit() != nullptr){
+            nextque.push(currentLocation->getSouth());
+            currentLocation->getSouth()->setVisit(nullptr);
             currentLocation->getSouth()->proc=proc2;
             branch++;
         }
     }
     if(currentLocation->getWarp() != nullptr){
-        if(currentLocation->getWarp()->getFlag() != nullptr){
-            tugi.push(currentLocation->getWarp());
-            currentLocation->getWarp()->setFlag(nullptr);
+        if(currentLocation->getWarp()->getVisit() != nullptr){
+            nextque.push(currentLocation->getWarp());
+            currentLocation->getWarp()->setVisit(nullptr);
             currentLocation->getWarp()->proc=proc2;
             branch++;
         }
@@ -129,10 +129,10 @@ bool PlayerBot::findGoal(Tile * currentLocation)
 
     branchq.front()--;
   
-    Tile* tugip=tugi.front();
-    tugi.pop();
+    Tile * next = nextque.front();
+    nextque.pop();
     number++;
-    findGoal(tugip);
+    findGoal(next);
     return false;
 }
 

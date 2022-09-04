@@ -16,7 +16,7 @@ private:
 	Tile * west;
 	Tile * warp;
 	PlayerBot * bot;
-	Tile * flag;
+	Tile * visit;
 public:
 	Tile();
 	virtual ~Tile();
@@ -33,8 +33,8 @@ public:
 	Tile * getWarp(void ) { return warp; }
 	void setPlayerBot(PlayerBot * bot) { this->bot = bot; }
 	PlayerBot * getPlayerBot(void ) { return bot; }
-	void setFlag(Tile * flag){this->flag = flag;}
-	Tile * getFlag(void) {return flag;}
+	void setVisit(Tile * visit){this->visit = visit;}
+	Tile * getVisit(void) {return visit;}
 };
 
 #endif /* _SRC_TILE_H_ */

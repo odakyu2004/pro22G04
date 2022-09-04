@@ -13,7 +13,7 @@ Tile::Tile() {
 	this->setWest(nullptr);
 	this->setWarp(nullptr);
 	this->setPlayerBot(nullptr);
-	this->setFlag(nullptr);
+	this->setVisit(nullptr);
 }
 
 Tile::~Tile() {

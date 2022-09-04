@@ -68,7 +68,7 @@ void Dungeon::loadData(void )
 		if (data[i].warp != -1) {
 			tiles[i]->setWarp(tiles[data[i].warp]);
 		}
-		tiles[i]->setFlag(tiles[i]);
+		tiles[i]->setVisit(tiles[i]);
 	}
 	return;
 }
